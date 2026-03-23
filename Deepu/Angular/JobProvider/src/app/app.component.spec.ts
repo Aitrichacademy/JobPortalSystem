@@ -14,16 +14,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'Jobprovider'`, () => {
+  it(`should have as title 'last'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('Jobprovider');
+    expect(app.title).toEqual('last');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('Jobprovider app is running!');
+    expect(compiled.querySelector('.content span')?.textContent).toContain('last app is running!');
   });
 });

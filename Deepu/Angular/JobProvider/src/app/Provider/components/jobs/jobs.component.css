@@ -1,0 +1,12 @@
+.container-fluid{
+    box-shadow: 1px 1px 4px grey;
+    border: 1px solid rgb(201, 195, 195);
+    overflow-x: hidden;
+}
+
+.jobsummary{
+    background-color: rgb(215, 212, 212);
+    color: rgb(10, 6, 118);
+    border: 1px solid black;
+}
+

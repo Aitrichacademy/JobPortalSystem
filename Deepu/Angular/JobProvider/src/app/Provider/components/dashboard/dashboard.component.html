@@ -1,0 +1,190 @@
+<div class="container-fluid">
+
+    <div class="head col-12 mt-3">
+        <h2>Welcome, Thomas</h2>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-lg-3 col-md-6">
+            <div class="status-card" style="background:dodgerblue;color: white;">
+                <div class="status-info">
+                    <div class="count"><small>Applications</small>
+                        <p>{{ applicationsCount }}</p>
+                    </div>
+                    <div class="progress-circle">
+                        <mat-progress-spinner [value]="applicationsProgress" mode="determinate"></mat-progress-spinner>
+                        <div class="progress-text">{{ applicationsProgress }}%</div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6">
+            <div class="status-card" id="shortlisted"
+                style="background:linear-gradient(45deg,green,lightgreen);color: white;">
+                <div class="status-info">
+                    <div class="count"><small>Shortlisted</small>
+                        <p>{{ shortlistedCount }}</p>
+                    </div>
+                    <div class="progress-circle">
+                        <mat-progress-spinner [value]="shortlistedProgress" mode="determinate"></mat-progress-spinner>
+                        <div class="progress-text">{{ shortlistedProgress }}%</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6">
+            <div class="status-card" style="background:yellowgreen;color: white;">
+                <div class="status-info">
+                    <div class="count"><small>On Hold</small>
+                        <p>{{ onHoldCount }}</p>
+                    </div>
+                    <div class="progress-circle">
+                        <mat-progress-spinner [value]="onHoldProgress" color="accent"
+                            mode="determinate"></mat-progress-spinner>
+                        <div class="progress-text">{{ onHoldProgress }}%</div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6">
+            <div class="status-card" style="background:linear-gradient(45deg,red,lightyellow);color: white;">
+                <div class="status-info">
+                    <div class="count"><small>Blocked</small>
+                        <p>{{ blockedCount }}</p>
+                    </div>
+                    <div class="progress-circle">
+                        <mat-progress-spinner [value]="blockedProgress" color="warn"
+                            mode="determinate"></mat-progress-spinner>
+                        <div class="progress-text">{{ blockedProgress }}%</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid mt-2 p-2 d-flex">
+    <div class="row justify-content-center">
+        <div class="card col-lg-5 col-md-12 col-sm-12 p-2 m-2">
+            <div class="text-center pt-1">
+                <h3>Most active companies</h3>
+            </div>
+            <hr>
+            <div class="chat-message" *ngFor="let item of companies">
+                <img [src]="item.image" class="avatar" alt="Company Logo">
+                <div class="message-content">
+                    <h3 class="text-primary">{{ item.name }}</h3>
+                    <p>{{ item.description }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="card col-lg-3 col-md-5 col-sm-12 m-2 bg-primary" id="key-recruiter">
+            <div class="wayne text-center pt-3">
+                <img src="../../../assets/images/wayne-enter.webp" alt="Wayne Enterprises">
+            </div>
+            <hr>
+            <h1 class="text-light text-center"><b>Wayne Enterprises</b></h1>
+            <div class=" text-light d-flex justify-content-between p-2">
+                <div class="title"><h3>Posts</h3></div>
+                <div class="number"> <h3>11k</h3></div>
+            </div>
+            <div class=" text-light d-flex justify-content-between p-2">
+                <div class="title"><h3>Jobs Posted</h3></div>
+                <div class="number"> <h3>652</h3></div>
+            </div>
+            <div class=" text-light d-flex justify-content-between p-2">
+                <div class="title"><h3>Hiring Percentage</h3></div>
+                <div class="number"> <h3>69%</h3></div>
+            </div>
+        </div>
+         <div class="card col-lg-3 col-md-5 col-sm-12 m-2" id="key-recruiters">
+            <div class="wayne text-center pt-3">
+                <img src="../../../assets/images/stark-indus.jpg" alt="Wayne Enterprises">
+            </div>
+            <hr>
+            <h1 class="text-light text-center"><b>Stark Industries</b></h1>
+            <div class=" text-light d-flex justify-content-between p-2">
+                <div class="title"><h3>Posts</h3></div>
+                <div class="number"> <h3>9k</h3></div>
+            </div>
+            <div class=" text-light d-flex justify-content-between p-2">
+                <div class="title"><h3>Jobs Posted</h3></div>
+                <div class="number"> <h3>712</h3></div>
+            </div>
+            <div class=" text-light d-flex justify-content-between p-2">
+                <div class="title"><h3>Hiring Percentage</h3></div>
+                <div class="number"> <h3>63%</h3></div>
+            </div>
+        </div> 
+    </div>
+    
+</div>
+<div class="container-fluid p-2 mt-2">
+    <div class="row justify-content-center">
+        <div class=" col-lg-6">
+            <div class="card" id="recent-activity">
+                <div class="card-body">
+                    <h5 class="card-title">Recent Searches </h5>
+                    <ul class="list-group">
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Prompt Engineering
+                            <span class="badge badge-primary badge-pill">25%</span>
+                            <div class="progress" style="width: 50%;">
+                                <div class="progress-bar bg-primary" role="progressbar" style="width: 25%;"
+                                    aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Architect
+                            <span class="badge badge-primary badge-pill">50%</span>
+                            <div class="progress" style="width: 50%;">
+                                <div class="progress-bar bg-primary" role="progressbar" style="width: 50%;"
+                                    aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Software Development
+                            <span class="badge badge-primary badge-pill">75%</span>
+                            <div class="progress" style="width: 50%;">
+                                <div class="progress-bar bg-primary" role="progressbar" style="width: 75%;"
+                                    aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Warehouse Department
+                            <span class="badge badge-primary badge-pill">100%</span>
+                            <div class="progress" style="width: 50%;">
+                                <div class="progress-bar bg-primary" role="progressbar" style="width: 100%;"
+                                    aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Tele-callers
+                            <span class="badge badge-primary badge-pill">100%</span>
+                            <div class="progress" style="width: 50%;">
+                                <div class="progress-bar bg-primary" role="progressbar" style="width: 100%;"
+                                    aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Department Handlers
+                            <span class="badge badge-primary badge-pill">60%</span>
+                            <div class="progress" style="width: 50%;">
+                                <div class="progress-bar bg-primary" role="progressbar" style="width: 60%;"
+                                    aria-valuenow="70" aria-valuemin="0" aria-valuemax="70"></div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-body">
+                    <canvas id="myChart" width="400" height="200"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

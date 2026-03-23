@@ -1,0 +1,39 @@
+
+
+.page_404
+{
+    padding: 40px 0;
+    background: #fff;
+    font-family: 'Poppins';
+    margin:auto;
+}
+
+
+.four_zero_four_bg
+{
+    /* background: url('../../../assets/images/notfound.gif'); */
+    background: url('src\assets\images\notfound.gif');
+    height: 400px;
+    
+    background-position: center;
+    background-repeat: none;
+}
+
+h1
+{
+    font-size: 5em;
+    font-family: "poppins";
+}
+
+h3
+{
+    font-size: 2em;
+    font-family: "poppins";
+}
+
+
+
+.content_box_404
+{
+    margin-top: -50px;
+}

@@ -1,0 +1,230 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&display=swap");
+.cards-div{
+    border: solid 1px red;
+    padding: 3%;
+    justify-content: space-between;
+}
+
+.card{
+   
+    border-radius: 10px;
+    box-shadow: 8px 8px 8px rgba(0.3,0.3,0.3,0.12),
+    8px 8px 8px rgba(0.3,0.3,0.3,0.14);
+}
+#recent-activity{
+    height: 100%;
+}
+.timeline {
+    list-style: none;
+    padding: 20px 0;
+    position: relative;
+  }
+  
+  .timeline:before {
+    background: #d4d9df;
+    content: '';
+    margin-left: -1px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 40px;
+    width: 2px;
+    z-index: 0;
+  }
+  
+  .timeline > li {
+    margin-bottom: 20px;
+    position: relative;
+  }
+  
+  .timeline > li:before,
+  .timeline > li:after {
+    content: '';
+    display: table;
+  }
+  
+  .timeline > li:after {
+    clear: both;
+  }
+  
+  .timeline > li .timeline-badge {
+    background: #007bff;
+    border: 0;
+    border-radius: 50%;
+    color: #fff;
+    font-size: 14px;
+    height: 30px;
+    width: 30px;
+    line-height: 30px;
+    position: absolute;
+    text-align: center;
+    top: 16px;
+    left: 0;
+    z-index: 1;
+  }
+  
+  .timeline > li.timeline-inverted > .timeline-panel {
+    float: right;
+  }
+  
+  .timeline > li.timeline-inverted > .timeline-panel:before {
+    border-left-width: 0;
+    border-right-width: 15px;
+    left: -15px;
+    right: auto;
+  }
+  
+  .timeline > li.timeline-inverted > .timeline-panel:after {
+    border-left-width: 0;
+    border-right-width: 14px;
+    left: -14px;
+    right: auto;
+  }
+  
+  .timeline > li > .timeline-panel {
+    background: #f7f7f7;
+    border: 1px solid #d4d9df;
+    border-radius: 0;
+    padding: 20px;
+    position: relative;
+    width: 40%;
+  }
+  
+  .timeline > li > .timeline-panel:before {
+    background: #fff;
+    border: 0;
+    border-radius: 4px;
+    box-shadow: 0 0 0 1px #d4d9df;
+    content: '';
+    height: 14px;
+    left: -6px;
+    position: absolute;
+    top: 23px;
+    width: 14px;
+    z-index: 1;
+  }
+  
+  .timeline > li > .timeline-panel:after {
+    background: #fff;
+    border: 0;
+    border-radius: 4px;
+    box-shadow: 0 0 0 1px #d4d9df;
+    content: '';
+    height: 14px;
+    left: -5px;
+    position: absolute;
+    top: 24px;
+    width: 12px;
+    z-index: 1;
+  }
+  .status-card {
+    background-color: #f9f9f9;
+    text-align: center;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 8px 8px 8px rgba(0.3,0.3,0.3,0.12),
+    8px 8px 8px rgba(0.3,0.3,0.3,0.14);
+  }
+  
+  .status-card {
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .status-info {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  .progress-circle {
+    position: relative;
+  }
+  
+  .progress-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 24px;
+  }
+  .progress-bar{
+    animation: progress 2s ease-in-out forwards;
+  }
+  @keyframes progress {
+    0% {
+      width: 0;
+      opacity: 1;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  .count {
+    line-height: 1.5;
+    font-size: 30px;
+    font-weight: bold;
+  }
+ 
+#chat-card {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 8px 8px 8px rgba(0.3,0.3,0.3,0.12),
+    8px 8px 8px rgba(0.3,0.3,0.3,0.14);
+    height: 30%; 
+  }
+  
+  .chat-container::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .chat-messages {
+    padding: 10px;
+  }
+  
+  .chat-message {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+  
+  .avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+  
+  .message-content {
+    background-color: #f2f2f2;
+    padding: 10px;
+    border-radius: 10px;
+  }
+  
+  .message-content h3 {
+    margin-top: 0;
+    margin-bottom: 5px;
+  }
+  
+  .message-content p {
+    margin: 0;
+  }
+  #key-recruiters{
+   background:rgb(81, 0, 132) ; 
+  }
+  #key-recruiter{
+    background:#ccc; 
+   }
+  .wayne img{
+    width: 45%;
+    height: 95%;
+    border-radius: 50%;
+    border: solid 7px #ccc;
+  }
+  
+ 
