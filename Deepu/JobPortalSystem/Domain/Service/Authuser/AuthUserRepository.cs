@@ -17,13 +17,16 @@ namespace Domain.Service.Authuser
     public class AuthUserRepository: IAuthUserRepository
     {
         protected readonly DbHireMeNowWebApiContext _context;
-        IMapper mapper;
-        private readonly IConfiguration _configuration;
-        public AuthUserRepository(DbHireMeNowWebApiContext dbContext,IMapper _mapper, IConfiguration configuration)
+        private readonly IConfiguration _config;
+
+      
+        
+        private readonly IMapper mapper;
+        public AuthUserRepository(DbHireMeNowWebApiContext dbContext,IMapper _mapper, IConfiguration config)
         {
             _context = dbContext;
             mapper = _mapper;
-            _configuration = configuration;
+            _config= config;
         }
 
         public async Task<AuthUser> AddAuthUser(AuthUser authUser)
@@ -53,40 +56,64 @@ namespace Domain.Service.Authuser
             return authUser;
         }
 
+        //public string? CreateToken(AuthUser user)
+        //{
+        //    if (user == null)
+        //    {
+        //        // Handle the case where the user object is null, e.g., by throwing an exception or returning null.
+        //        throw new ArgumentNullException(nameof(user), "User object cannot be null.");
+        //    }
+        //    string tokenSecret = _configuration.GetSection("AuthSettings:Token").Value;
+        //    if (string.IsNullOrEmpty(tokenSecret))
+        //    {
+        //        // Handle the case where the token secret is missing or empty, e.g., by throwing an exception or returning null.
+        //        throw new InvalidOperationException("Token secret is missing or empty in configuration.");
+        //    }
+
+        //    List<Claim> claims = new List<Claim>
+        //    {
+        //        new Claim(ClaimTypes.Name, user.FirstName),
+        //        new Claim(ClaimTypes.Email, user.Email),
+        //        new Claim(ClaimTypes.Sid, user.Id.ToString()),
+        //        new Claim(ClaimTypes.Role, user.Role.ToString())
+        //    };
+        //    var key = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes(
+        //        _configuration.GetSection("AuthSettings:Token").Value));
+
+        //    var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);
+
+        //    var token = new JwtSecurityToken(
+        //        claims: claims,
+        //        expires: DateTime.Now.AddDays(1),
+        //        signingCredentials: creds);
+
+        //    var jwt = new JwtSecurityTokenHandler().WriteToken(token);
+
+        //    return jwt;
+        //}
         public string? CreateToken(AuthUser user)
         {
-            if (user == null)
+            var claims = new[]
             {
-                // Handle the case where the user object is null, e.g., by throwing an exception or returning null.
-                throw new ArgumentNullException(nameof(user), "User object cannot be null.");
-            }
-            string tokenSecret = _configuration.GetSection("AuthSettings:Token").Value;
-            if (string.IsNullOrEmpty(tokenSecret))
-            {
-                // Handle the case where the token secret is missing or empty, e.g., by throwing an exception or returning null.
-                throw new InvalidOperationException("Token secret is missing or empty in configuration.");
-            }
+        new Claim(JwtRegisteredClaimNames.Sub, user.UserName),
+        new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+        new Claim(ClaimTypes.Email, user.Email ?? string.Empty),
+        new Claim("UserId", user.Id.ToString()),
+        new Claim(ClaimTypes.Role, user.Role.ToString())
+    };
 
-            List<Claim> claims = new List<Claim>
-            {
-                new Claim(ClaimTypes.Name, user.FirstName),
-                new Claim(ClaimTypes.Email, user.Email),
-                new Claim(ClaimTypes.Sid, user.Id.ToString()),
-                new Claim(ClaimTypes.Role, user.Role.ToString())
-            };
-            var key = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes(
-                _configuration.GetSection("AuthSettings:Token").Value));
-
-            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Jwt:Key"]));
+            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
             var token = new JwtSecurityToken(
+                issuer: _config["Jwt:Issuer"],
+                audience: _config["Jwt:Audience"],
                 claims: claims,
-                expires: DateTime.Now.AddDays(1),
-                signingCredentials: creds);
+                expires: DateTime.UtcNow.AddHours(1),
+                signingCredentials: creds
+            );
 
-            var jwt = new JwtSecurityTokenHandler().WriteToken(token);
-
-            return jwt;
+            return new JwtSecurityTokenHandler().WriteToken(token);
         }
         public CompanyUser GetUser(Guid userid)
         {
