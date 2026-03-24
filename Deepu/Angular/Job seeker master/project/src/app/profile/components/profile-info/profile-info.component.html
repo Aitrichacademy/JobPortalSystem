@@ -1,0 +1,174 @@
+<div class="container-fluid" *ngIf="user">
+
+  <div class="row">
+    <div class="col-md-5">
+      <div class="container-fluid">
+        <div class="row">
+          <!-- <div class="col-md-12">
+                    <div class="row"> -->
+          <div class="col-md-11 ml-4 text-secondary">
+            <div class="row">
+              <div class="col-md-12 border rounded mr-4 p-3 mb-4">
+                <label for="profilePictureInput">
+                  <div class="profile-picture-wrapper">
+                    <img class="img-fluid mx-auto d-block p-5 rounded" src="data:image/png;base64,{{user.image}}" width:10 height:10
+                      id="profilePicture">
+                    <div class="upload-overlay">
+                      <i class="fa fa-upload fa-5x"></i>
+                      <span>Upload Picture</span>
+                    </div>
+                  </div>
+                </label>
+                <input type="file" id="profilePictureInput" class="d-none">
+                <h4 class="h5-fluid text-center text-dark">{{user.firstName}} {{user.lastName}}</h4>
+                <p class="text-center small">{{user.email}}</p>
+                <div class="bg-info text-primary font-weight-bold bg-light rounded h-20 mb-4 text-center">
+                  <form>
+                    <div class="mb-3">
+                      <label for="resumeInput" class="form-label">Choose Resume file</label>
+                      <input type="file" class="form-control" id="resumeInput" accept=".pdf, .doc, .docx" [(ngModel)]="resumeFile" name="resumeFile" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Upload Resume</button>
+                  </form>
+                </div>
+                <img class="img-fluid mr-3" src="../../../../assets/images/g1.png">{{user.phone}}<br><br>
+                <img class="img-fluid mr-3" src="assets/images/location.png">location
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12 border rounded pb-4 mr-4 p-3 ">
+                <h5 class="h5-fluid text-dark"><i class="fa fa-tasks" aria-hidden="true"></i> {{ isEditMode ? 'Edit Seeker Skill' : 'Skills'}}</h5>
+                <ng-container *ngIf="!isEditMode; else editSection" >
+                <ng-container *ngFor="let skills of addedSkill">
+                  <p>{{skills.name}}</p>
+                  </ng-container>
+                <hr>
+                <div class="d-flex justify-content-end">
+                <button class="btn edit-button" data-toggle="collapse" data-target="#aboutForm" (click)="toggleEditMode()"><i class="fas fa-edit"></i></button>
+                </div>
+                <div *ngIf="errorMessage" [style.color]="'red'" [style.fontWeight]="'bold'">
+                  <p>{{ errorMessage }}</p>
+                </div>
+                </ng-container>
+
+                <ng-template #editSection>
+                  <form #addSkill="ngForm" (ngSubmit)="updateProfile(addSkill)">
+                      <div class="form-group">
+                              <select (ngModel)="skillSection" name="skillSection" style="width: 300px;">
+                                <option *ngFor="let item of dropDownData" [value]="item.id">{{ item.name}}--{{item.description}}</option>
+                              </select>
+                      </div>
+                     
+                      <button type="submit" class="btn btn-primary">{{ isEditMode ? 'Update' : 'Save'
+                          }}</button>
+                      <button type="button" class="btn btn-secondary"
+                          (click)="toggleEditMode2()">Cancel</button>
+                  </form>
+                </ng-template>
+              </div>
+          </div>
+          
+          </div>
+        
+        </div>
+      </div>
+
+    </div>
+    <div class="col-md-7">
+      <div class="container-fluid">
+        <div class="row mt-5">
+          <div class="col-md-12 border rounded pb-4 mr-4 p-3">
+            <h5 class="h5-fluid text-dark"><i class="fa fa-graduation-cap" aria-hidden="true"></i> {{ isEditMode2 ? 'Edit Qualification' : 'Qualification'}}</h5>
+            <ng-container *ngIf="!isEditMode2; else editSection2">
+              <ng-container *ngFor="let qualificationList of qualification">
+                <div class="mb-3">
+                  <p>{{ qualificationList.name }}</p>
+                  <p>{{ qualificationList.description }}</p>
+                </div>
+              </ng-container>
+              <hr>
+              <div class="d-flex justify-content-end">
+                <button class="btn btn-outline-primary" data-toggle="collapse" data-target="#aboutForm" (click)="toggleEditMode2()">
+                  <i class="fas fa-edit"></i> Edit
+                </button>
+              </div>
+            </ng-container>            
+        
+            <ng-template #editSection2>
+              <form [formGroup]="qualificationForm" (ngSubmit)="addQualification()" class="example-form">
+                <div class="form-group">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Qualification" formControlName="qualificationName">
+                  </mat-form-field>
+        
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Description" formControlName="description">
+                  </mat-form-field>
+                </div>
+        
+                <button type="submit" class="btn btn-primary">{{ isEditMode2 ? 'Update' : 'Save' }}</button>
+                <button type="button" class="btn btn-secondary" (click)="toggleEditMode2()">Cancel</button>
+              </form>
+            </ng-template>
+          </div>
+        </div>
+        
+
+      <div class="row mt-5">
+        <div class="col-md-12 border rounded pb-4 mr-4 p-3">
+          <h5 class="h5-fluid text-dark"><i class="fa fa-graduation-cap" aria-hidden="true"></i> {{ isEditMode3 ? 'Edit Experience' : 'Experience'}}</h5>
+          <ng-container *ngIf="!isEditMode3; else editSection3">
+            <ng-container *ngFor="let experienceList of experience">
+              <div class="mb-3">
+                <p class="mb-1">{{experienceList.jobTitle}}</p>
+                <p class="mb-1">{{experienceList.companyName}}</p>
+                <p class="mb-1">{{experienceList.summary}}</p>
+                <p class="mb-1"><strong>Service Start:</strong> {{ experienceList.serviceStart | date: 'yyyy-MM-dd' }}</p>
+                <p class="mb-1"><strong>Service End:</strong> {{ experienceList.serviceEnd | date: 'yyyy-MM-dd' }}</p>
+              </div>
+            </ng-container>
+            <hr>
+            <div class="d-flex justify-content-end">
+              <button class="btn btn-outline-primary" data-toggle="collapse" data-target="#aboutForm" (click)="toggleEditMode3()"><i class="fas fa-edit"></i> Edit</button>
+            </div>
+          </ng-container>
+      
+          <ng-template #editSection3>
+            <form [formGroup]="experienceForm" (ngSubmit)="addExperience()" class="example-form">
+              <div class="form-group">
+                <mat-form-field class="example-full-width">
+                  <input matInput placeholder="Job Title" formControlName="jobTitle">
+                </mat-form-field>
+      
+                <mat-form-field class="example-full-width">
+                  <input matInput placeholder="Company Name" formControlName="companyName">
+                </mat-form-field>
+      
+                <mat-form-field class="example-full-width">
+                  <input matInput placeholder="Summary" formControlName="summary">
+                </mat-form-field>
+
+                <div class="example-full-width">
+                  <label for="serviceStart">Service Start</label>
+                  <input type="date" id="serviceStart" placeholder="Service Start" formControlName="serviceStart" pattern="\d{4}-\d{2}-\d{2}" required>                
+                </div>
+                
+                <div class="example-full-width">
+                  <label for="serviceEnd">Service End</label>
+                  <input type="date" id="serviceEnd" placeholder="Service End" formControlName="serviceEnd" pattern="\d{4}-\d{2}-\d{2}" required>
+                </div>
+
+              </div>
+      
+              <button type="submit" class="btn btn-primary">{{ isEditMode3 ? 'Update' : 'Save' }}</button>
+              <button type="button" class="btn btn-secondary" (click)="toggleEditMode3()">Cancel</button>
+            </form>
+          </ng-template>
+        </div>
+      </div>
+      
+
+      </div>
+    </div>
+
+  </div>

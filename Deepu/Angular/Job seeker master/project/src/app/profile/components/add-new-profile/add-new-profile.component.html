@@ -1,0 +1,33 @@
+<div class="container">
+  <button id="addProfileBtn" class="btn btn-primary mb-3" (click)="navigateToAddProfile()">Add New Profile</button>
+
+  <div class="scrollable-content">
+    <div class="row mt-5">
+      <ng-container *ngFor="let profile of profiles">
+        <div class="col-md-6">
+          <div class="profile-card card">
+            <div class="card-header bg-primary text-white">
+              <h2>{{profile.profileName}}</h2>
+            </div>
+            <div class="card-body">
+              <p>{{profile.profileSummary}}</p>
+              
+              <div class="d-flex justify-content-between align-items-center">
+                <button class="btn btn-success view-profile-btn" (click)="viewProfile(profile.id)">View Profile</button>
+              </div>
+            </div>
+            <div class="resume-upload-section bg-light rounded mb-4 p-3 text-center">
+              <form>
+                <div class="mb-3">
+                  <label for="resumeInput" class="form-label">Choose Resume file</label>
+                  <input type="file" class="form-control" id="resumeInput" accept=".pdf, .doc, .docx" [(ngModel)]="resumeFile" name="resumeFile" required>
+                </div>
+                <button type="submit" class="btn btn-info btn-upload" (click)="uploadResume(profile.id, profile.profileName, profile.profileSummary)">Upload Resume</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</div>
