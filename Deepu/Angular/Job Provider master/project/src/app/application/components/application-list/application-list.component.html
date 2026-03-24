@@ -1,0 +1,50 @@
+<div class="container-fluid">
+    <div class="row mt-4">
+        <h5>FIND APPLICATIONS</h5>
+    </div>
+
+    <div class="row mt-1">
+        <div class="col-md-9">
+            <div class="input-group">
+                <input class="form-control border rounded-pill" type="search" id="example-search-input">
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-7">
+            <p class="paragragh-heading-1" style="margin-top: 50px;">Showing {{applicationCount}} applications</p>
+            <ng-container *ngFor="let applicationList of applications">
+                <div>
+              
+                <div class="card w-85 bg-light">
+                   
+                    <div class="card-body ">
+                        <div class="row ">
+                            <div class="col-md-2">
+                                <img src="../../../../assets/images/Applications/man.png">
+                            </div>
+                            <div class="col-md-10 mt-3" style="font-family: 'Inter';">
+                                <h5 class="card-title" style="font-family: 'DM Sans';">{{applicationList.jobSeekerName}}</h5>
+                                <p class="card-text">
+                                    <span><b>Qualification :</b> {{applicationList.jobSeekerQualification}}</span> <br>
+                                    <span><b>Experience :</b> {{applicationList.jobSeekerExperience}}</span>
+                                </p>
+                                <div style="text-align: center;"><a routerLink="/application/view" class="btn btn-primary view-btn">View</a></div>
+                                
+                            </div>
+                        </div>
+
+                    </div>
+               
+                </div>
+            
+            </div>
+            <br>
+        </ng-container>
+        </div>
+        <div class="col-md-5">
+            <img src="../../../../assets/images/bg-images/business-finance-employment-female.png" style="width: 100%;">
+        </div>
+    </div>
+</div>

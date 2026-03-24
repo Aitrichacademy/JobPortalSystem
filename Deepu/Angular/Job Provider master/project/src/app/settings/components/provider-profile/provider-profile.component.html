@@ -1,0 +1,48 @@
+
+
+<div class="container-fluid">
+    <ng-container *ngFor="let providerProfile of jobProviderProfile "> 
+<div class="row mx-3">
+    <div class="col-md-5 ml-4 text-secondary">
+        <div class="row">
+                     
+                <div class="col-md-12 border rounded mr-4 p-3 mb-4">
+                <img class="img-fluid mx-auto d-block p-5" src="../../../../assets/images/settings/cheerful-curly.png">
+                <h5 class="h5-fluid text-center text-dark">{{providerProfile.jobProviderName}}</h5>
+                <p class="text-center small">{{providerProfile.designation}}</p>
+                <!-- <div class="bg-info text-primary font-weight-bold bg-light rounded h-20 mb-4 text-center">
+                    <img class="img-fluid " src="images/upload 1.png">RESUME
+                </div> -->
+                <img class="img-fluid mr-3" src="../../../../assets/images/settings/sms.png">{{providerProfile.email}}<br><br>
+                <img class="img-fluid mr-3" src="../../../../assets/images/settings/call.png">{{providerProfile.phone}}<br><br>
+                <img class="img-fluid mr-3" src="../../../../assets/images/settings/location.png">{{providerProfile.location}}
+                <img class="img-fluid float-right" src="../../../../assets/images/settings/edit-2.png" style="float:right">
+                
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-md-12 border rounded pb-4 mr-4 p-3 ">
+                <h5 class="h5-fluid text-dark">About Me</h5>
+                <p> {{providerProfile.about}}</p>
+                <br><br><br><br><br><hr>
+                <!-- <img class="img-fluid float-right ml-3" src="images/DotsThree.png"> -->
+                <img class="img-fluid " src="../../../../assets/images/settings/edit-2.png" style="float:right">
+            </div>
+        </div>
+    </div>
+
+    <!-- 2nd column start -->
+
+    <div class="col-md-6 ml-4 text-secondary mx-3">
+        <app-provider-professional-info [data]="providerProfile.skills" [title]="'Skills'" [image]="img1"></app-provider-professional-info>
+        <app-provider-professional-info [data]="providerProfile.education" [title]="'Education'" [image]="img2"></app-provider-professional-info>
+        <app-provider-professional-info [data]="providerProfile.experience" [title]="'Experience'" [image]="img3"></app-provider-professional-info>
+    </div>
+
+        
+</div>
+</ng-container>
+</div>
+
+

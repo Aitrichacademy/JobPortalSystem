@@ -1,0 +1,43 @@
+<div class="row mx-3 my-4">
+    <h5>SHORT LIST</h5>
+</div>
+
+<div class="row mt-1">
+    <div class="col-md-9">
+        <div class="input-group">
+            <input class="form-control border rounded-pill" type="search" id="example-search-input">
+        </div>
+    </div>
+</div>
+
+<div class="container mx-3 my-3">
+    <div class="row border custom-row ">
+
+        <div class="col-md-6">
+            <ng-container *ngFor="let list of interviewList">
+                <div class="row mt-5 mx-3">
+                    <div class="col-md-2">
+                        <img src="../../../../assets/images/Interview/Company Logo.png" class="img-fluid img-thumbnail"
+                            alt="company-logo" align="center">
+
+                    </div>
+
+                    <div class="col-md-4">
+                        <h5>{{list.jobTitle}}</h5>
+                        <h6>Date of Interview:{{list.dateOfInterview}}</h6>
+                        <h6>Location/Online:{{list.location}}</h6>
+                        <h6>Time:{{list.time}}</h6>
+                        <button class="custom-button center">View</button>
+                    </div>
+
+                </div>
+            </ng-container>
+        </div>
+
+
+        <div class="col-md-6">
+
+            <img src="../../../../assets/images/Interview/nice-meeting-businessmen 1.png" class="img-fluid">
+        </div>
+    </div>
+</div>

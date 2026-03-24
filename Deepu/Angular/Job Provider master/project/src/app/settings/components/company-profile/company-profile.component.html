@@ -1,0 +1,55 @@
+<div class="container-fluid">
+<div class="row over-flow">
+    <ng-container *ngFor="let companyData of companyProfile">
+    <!-- Content -->
+    <!-- First column -->
+        <div class="col-md-4 p-3">
+            <div class="row">
+                <div class="col-md-12 p-3 m-4 border rounded">
+                    <img class="img-fluid mx-auto d-block" src="../../../../assets/images/settings/logo-design 1.png">
+                    <h4 class="h4-fluid text-center text-dark">{{companyData.companyName}}</h4><br><br>
+                    <img class="img-fluid" src="../../../../assets/images/settings/website 1.png" width="20" height="20"><a class="text-secondary p-3"  href="#">{{companyData.companyWebsite}}</a><br>
+                    <img class="img-fluid" src="../../../../assets/images/settings/sms.png" width="20" height="20"><a class="text-secondary p-3 text-decoration-underline" href="#">{{companyData.companyMail}}</a><br>
+                    <img class="img-fluid" src="../../../../assets/images/settings/receiver 1.png" width="15" height="15"><a class="text-secondary p-3" href="#">{{companyData.companyPhone}}</a><br>
+                    <img src="../../../../assets/images/settings/location.png" width="20" height="20"><a class="text-secondary p-3" href="#">{{companyData.companyLocation}}</a><br>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 p-3 border rounded m-4">
+                    <h5 class="h5-fluid text-dark">About Company</h5>
+                    <p class="d-block">{{companyData.aboutCompany}}</p>
+                </div>
+            </div>
+        </div>
+<!--2nd column -->
+
+<div class="col-md-6 p-3 mx-auto mt-4">
+    <div class="row">
+        <!-- <div class="col-md-12 p-3 border rounded m-4 ml-5">
+           
+            <h5 class="h5-fluid text-dark pl-5"> <img class="img-fluid float-left" src="../../../../assets/images/settings/binoculars 1.png">Vision</h5>
+            <ul class=" ml-5 pl-5">
+                <li>
+                    <p class="d-block">"To be the Technology partner of choice for forward looking customers collabratively transforming technology into business advantage."</p>
+                </li>
+                <li>
+                    <p class="d-block">Become the most trusted and capable technology trining provider in the world.</p>
+                </li>
+                <li>
+                    <p class="d-block"> Reliably handle the resource development departments of major software houses, so that they can focus on their core business.</p>
+                </li>
+            </ul>
+            <hr>
+        </div> -->
+    <app-provider-professional-info [data]="companyData.companyVision" [title]="'Vision'" [image]="img1"></app-provider-professional-info>
+    <app-provider-professional-info [data]="companyData.companyMission" [title]="'Mission'" [image]="img2"></app-provider-professional-info>
+    <app-provider-professional-info [data]="companyData.contactDetails" [title]="'Contact'" [image]="img3"></app-provider-professional-info>
+</div>
+
+
+ 
+</div>
+
+</ng-container>
+</div>
+</div>
